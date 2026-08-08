@@ -1,11 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Mr-Alam-ai</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr Alam AI - Azan Time</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#0d1117;color:#fff;text-align:center}
+header{padding:25px 15px;background:#161b22}
+h1{margin:0;color:#58a6ff}
+.card{max-width:500px;margin:25px auto;padding:22px;background:#161b22;border-radius:18px}
+.time{font-size:28px;margin:15px 0;padding:14px;background:#21262d;border-radius:12px}
+input,button{padding:12px;margin:6px;border-radius:9px;border:0;font-size:16px}
+input{width:80%;background:#fff}
+button{background:#238636;color:#fff;cursor:pointer}
+.small{color:#8b949e;font-size:14px}
+</style>
 </head>
-<body style="font-family:Arial;text-align:center;padding:40px;">
-<h1>🕌 Mr-Alam-ai</h1>
-<p>Assalamu Alaikum</p>
-<p>Ye meri Azan website ka pehla page hai.</p>
+<body>
+<header>
+<h1>Mr Alam AI</h1>
+<p>🕌 Azan Time & Alarm</p>
+</header>
+
+<div class="card">
+<h2>Today's Azan Times</h2>
+<div class="time">Fajr: <b id="fajr">05:00 AM</b></div>
+<div class="time">Dhuhr: <b id="dhuhr">01:15 PM</b></div>
+<div class="time">Asr: <b id="asr">04:45 PM</b></div>
+<div class="time">Maghrib: <b id="maghrib">06:30 PM</b></div>
+<div class="time">Isha: <b id="isha">08:00 PM</b></div>
+<p class="small">Admin can change the times on this phone.</p>
+</div>
+
+<div class="card">
+<h2>🔐 Admin Panel</h2>
+<input id="pin" type="password" placeholder="Admin PIN">
+<button onclick="login()">Login</button>
+<div id="panel" style="display:none">
+<p>Change Azan Times:</p>
+<input id="newFajr" placeholder="Fajr"><br>
+<input id="newDhuhr" placeholder="Dhuhr"><br>
+<input id="newAsr" placeholder="Asr"><br>
+<input id="newMaghrib" placeholder="Maghrib"><br>
+<input id="newIsha" placeholder="Isha"><br>
+<button onclick="saveTimes()">Save Times</button>
+<p class="small">Demo admin PIN: 1234</p>
+</div>
+</div>
+
+<script>
+function login(){
+  if(document.getElementById('pin').value==='1234'){
+    document.getElementById('panel').style.display='block';
+    alert('Admin login successful!');
+  }else alert('Wrong PIN');
+}
+function saveTimes(){
+  const ids=['fajr','dhuhr','asr','maghrib','isha'];
+  const inputs=['newFajr','newDhuhr','newAsr','newMaghrib','newIsha'];
+  ids.forEach((id,i)=>{
+    const v=document.getElementById(inputs[i]).value.trim();
+    if(v) document.getElementById(id).textContent=v;
+  });
+  alert('Azan times updated!');
+}
+</script>
 </body>
 </html>
